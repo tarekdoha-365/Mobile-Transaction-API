@@ -8587,11 +8587,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\repos\\MobilePay Assignment\\TestMobilePayApi\\TestMobilePayApi.csproj",
+      "projectUniqueName": "C:\\Mobile Pay\\Mobile Pay Assignment\\Code\\TestMobilePayApi\\TestMobilePayApi.csproj",
       "projectName": "TestMobilePayApi",
-      "projectPath": "C:\\repos\\MobilePay Assignment\\TestMobilePayApi\\TestMobilePayApi.csproj",
+      "projectPath": "C:\\Mobile Pay\\Mobile Pay Assignment\\Code\\TestMobilePayApi\\TestMobilePayApi.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\repos\\MobilePay Assignment\\TestMobilePayApi\\obj\\",
+      "outputPath": "C:\\Mobile Pay\\Mobile Pay Assignment\\Code\\TestMobilePayApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8613,8 +8613,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\repos\\MobilePay Assignment\\MobilePayAPI\\MobilePayAPI.csproj": {
-              "projectPath": "C:\\repos\\MobilePay Assignment\\MobilePayAPI\\MobilePayAPI.csproj"
+            "C:\\Mobile Pay\\Mobile Pay Assignment\\Code\\MobilePayAPI\\MobilePayAPI.csproj": {
+              "projectPath": "C:\\Mobile Pay\\Mobile Pay Assignment\\Code\\MobilePayAPI\\MobilePayAPI.csproj"
             }
           }
         }

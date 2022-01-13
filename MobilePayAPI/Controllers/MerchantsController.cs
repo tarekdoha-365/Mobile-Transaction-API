@@ -17,6 +17,7 @@ namespace MobilePayAPI.Contrllers
         private readonly IMapper _mapper;
         private readonly IBackgroundJobClient _backgroundJobClient;
         private readonly IRecurringJobManager _recurringJobManager;
+        public decimal total = 0;
         public MerchantsController(IMerchantService merchantService,
             IMapper mapper,
             IFeeService feeService,
@@ -71,6 +72,19 @@ namespace MobilePayAPI.Contrllers
                                         MerchantName = merchantGroup.Key,
                                         Amount = merchantGroup.Sum(x => x.Amount),
                                     };
+            foreach (var merchant in merchanatItems)
+            {
+                
+               for(int i= 0; i < MerchantTotalFees.Count(); i++)
+                {
+                   total += merchant.Amount;
+                }
+                string dayOfweek = new DateTime().DayOfWeek.ToString();
+                if ((dayOfweek != "Saturday") || (dayOfweek != "Sunday"))
+                {
+                    decimal charge = Convert.ToDecimal(0.01) * total;
+                }
+            }
             if (MerchantTotalFees == null)
             {
                 return NotFound();
