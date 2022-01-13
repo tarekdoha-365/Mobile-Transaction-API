@@ -63,6 +63,10 @@ namespace MobilePayAPI.Contrllers
         [HttpGet("{merchantName}/QueryTransactionsByMerchantName", Name = "GetQueryFeeTransactionByMarchantName")]
         public async Task<ActionResult> GetQueryFeeInfo(string merchantName)
         {
+            string dayOfweek = new DateTime().DayOfWeek.ToString();
+            string dateInString = "01.01.2020";
+            DateTime startDate = DateTime.Parse(dateInString);
+            DateTime expiryDate = startDate.AddDays(30);
 
             var merchanatItems = _merchantService.GetMerchantTransactionsByName(merchantName);
             var MerchantTotalFees = from merchant in merchanatItems
@@ -74,15 +78,56 @@ namespace MobilePayAPI.Contrllers
                                     };
             foreach (var merchant in merchanatItems)
             {
-                
-               for(int i= 0; i < MerchantTotalFees.Count(); i++)
+
+                for (int i = 0; i < MerchantTotalFees.Count(); i++)
                 {
-                   total += merchant.Amount;
-                }
-                string dayOfweek = new DateTime().DayOfWeek.ToString();
-                if ((dayOfweek != "Saturday") || (dayOfweek != "Sunday"))
-                {
-                    decimal charge = Convert.ToDecimal(0.01) * total;
+                    total += merchant.Amount;
+
+                    if ((dayOfweek != "Saturday") || (dayOfweek != "Sunday"))
+                    {
+                        if (merchantName == "Tesla" && MerchantTotalFees.Count() > 10 && DateTime.Now! > expiryDate)
+                        {
+                            decimal charge = Convert.ToDecimal(0.01) * total;
+                            decimal discount = Convert.ToDecimal(0.20) * charge;
+                            decimal contain10TransactionVolume = Convert.ToDecimal(0.20) * (charge - discount);
+                            decimal Totalfee = charge - discount - contain10TransactionVolume;
+                        }
+                        else
+                        {
+                            decimal charge = Convert.ToDecimal(0.01) * total;
+                            decimal discount = Convert.ToDecimal(0.20) * charge;
+                            decimal contain10TransactionVolume = /*Convert.ToDecimal(0.20) **/ (charge - discount);
+                            decimal Totalfee = charge - discount - contain10TransactionVolume;
+                        }
+                        if (merchantName == "Rema1000" && MerchantTotalFees.Count() > 10 && DateTime.Now! > expiryDate)
+                        {
+                            decimal charge = Convert.ToDecimal(0.01) * total;
+                            decimal discount = Convert.ToDecimal(0.15) * charge;
+                            decimal contain10TransactionVolume = Convert.ToDecimal(0.20) * (charge - discount);
+                            decimal Totalfee = charge - discount - contain10TransactionVolume;
+                        }
+                        else
+                        {
+                            decimal charge = Convert.ToDecimal(0.01) * total;
+                            decimal discount = Convert.ToDecimal(0.15) * charge;
+                            decimal contain10TransactionVolume = /*Convert.ToDecimal(0.20) **/ (charge - discount);
+                            decimal Totalfee = charge - discount - contain10TransactionVolume;
+                        }
+                        if (merchantName == "McDonald" && MerchantTotalFees.Count() > 10 && DateTime.Now! > expiryDate)
+                        {
+                            decimal charge = Convert.ToDecimal(0.01) * total;
+                            decimal discount = Convert.ToDecimal(0.05) * charge;
+                            decimal contain10TransactionVolume = Convert.ToDecimal(0.20) * (charge - discount);
+                            decimal Totalfee = charge - discount - contain10TransactionVolume;
+                        }
+                        else
+                        {
+                            decimal charge = Convert.ToDecimal(0.01) * total;
+                            decimal discount = Convert.ToDecimal(0.05) * charge;
+                            decimal contain10TransactionVolume = /*Convert.ToDecimal(0.20) **/ (charge - discount);
+                            decimal Totalfee = charge - discount - contain10TransactionVolume;
+                        }
+                    }
                 }
             }
             if (MerchantTotalFees == null)
