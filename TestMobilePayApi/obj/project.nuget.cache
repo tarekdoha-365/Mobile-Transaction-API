@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HTO8mg8tAtkVr4UDXon/455XHAveBgIA/0ChOl4bsz5ZjGPG5b3kbmLQM+1l4/PnaSokAJCFYLCNlAK5v2C8zw==",
+  "dgSpecHash": "HsxF5CKvZI5OZFhLyZjb6/brSmNBokej2ULOo3EhU9M/r4lRTWcojrhWH1Pi0QfU1zm6xs38YHdDFgQSQ3jtcg==",
   "success": true,
-  "projectFilePath": "C:\\repos\\MobilePay Assignment\\TestMobilePayApi\\TestMobilePayApi.csproj",
+  "projectFilePath": "C:\\Mobile Pay\\Mobile Pay Assignment\\Code\\TestMobilePayApi\\TestMobilePayApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
