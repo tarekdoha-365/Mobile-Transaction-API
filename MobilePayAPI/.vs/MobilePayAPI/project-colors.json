@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "f182ba00-cc0d-4fac-a63b-5dbc0a879beb": {
+      "ProjectGuid": "f182ba00-cc0d-4fac-a63b-5dbc0a879beb",
+      "DisplayName": "MobilePayAPI",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "909d017b-1ce5-43e1-8e3d-42eb1a62b8f4": {
+      "ProjectGuid": "909d017b-1ce5-43e1-8e3d-42eb1a62b8f4",
+      "DisplayName": "UnitTestMobilePayAPI",
+      "ColorIndex": 1
+    },
+    "c19618fb-25a5-4f4e-a326-49a6f83cfeaa": {
+      "ProjectGuid": "c19618fb-25a5-4f4e-a326-49a6f83cfeaa",
+      "DisplayName": "TestMobilePayApi",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

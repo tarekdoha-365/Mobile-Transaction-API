@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "yQVneFLqk47OUqWQ9srkxgRpabi+CgkecF7lQcvYoqY=",
+  "Source": "MobilePayAPI",
+  "BasePath": "_content/MobilePayAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
