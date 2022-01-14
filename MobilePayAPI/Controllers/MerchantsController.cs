@@ -44,7 +44,7 @@ namespace MobilePayAPI.Contrllers
             var merchanatItems = _merchantService.GetMerchants();
             foreach (var merchant in merchanatItems)
             {
-                BackgroundJob.Enqueue(() => 
+                _backgroundJobClient.Enqueue(() => 
                 Console.WriteLine($"Merchant Items Enqueue : " +
                 $"Merchant ID:{0}, Metrchant Name:{1}, Merchant Amount: {2}, Merchant TimeSpan: {3}"
                 ,merchant.ID,merchant.MerchantName, merchant.Amount, merchant.Timestamp));
@@ -56,7 +56,7 @@ namespace MobilePayAPI.Contrllers
         public ActionResult<MerchantReadDto> GetMerchant(Guid id)
         {
             var merchantItem = _merchantService.GetMerchant(id);
-            _backgroundJobClient.Enqueue(() => _merchantService.GetMerchant(id));
+            _backgroundJobClient.Enqueue(() => Console.WriteLine($"Merchant Item {1}", merchantItem));
             return Ok(_mapper.Map<MerchantReadDto>(merchantItem));
         }
 
@@ -98,6 +98,7 @@ namespace MobilePayAPI.Contrllers
                     decimal discount = Convert.ToDecimal(0.25) * charge;
                     decimal Volume = Convert.ToDecimal(0.20) * (charge - discount);
                     decimal Totalfee = charge - discount - Volume;
+                    _backgroundJobClient.Enqueue(() => Console.WriteLine($"Tesla Exceed 10 Transactions monthly,The description bill is:" + "1% fee charge of {total} DKK = {charge}, 25% Tesla discount of {total} DKK = {discount},Transaction is during a Friday, so the fee will not be free,20% volume discount of {charge} - {discount} = {Volume}, Total fee = {total}DKK - {charge}DKK - {Volume}DKK - {discount}DKK = {Totalfee} DKK ", total, charge, discount, Volume, Totalfee));
                 }
                 else
                 {
