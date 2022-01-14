@@ -20,4 +20,5 @@ Select MerchantName, COUNT(MerchantName),Sum (Amount) as Total_Fee FROM [Merchan
 * Total Fee Accomplished.....
 
 
-![alt text] (https://github.com/tarekdoha-365/MobilePay/blob/master/MobilePayAPI/Images/MobilePayResult.PNG?raw=true)
+
+![alt text](https://github.com/tarekdoha-365/MobilePay/blob/master/MobilePayAPI/Images/MobilePayResult.PNG)
