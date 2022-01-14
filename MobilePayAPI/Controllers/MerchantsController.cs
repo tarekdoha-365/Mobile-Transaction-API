@@ -84,52 +84,52 @@ namespace MobilePayAPI.Contrllers
                 }
             }
 
-                    if ((dayOfweek != "Saturday") || (dayOfweek != "Sunday"))
-                    {
-                        if (merchantName == "Tesla" && merchanatItems.Count() > 9 && DateTime.Now! > expiryDate)
-                        {
-                            decimal charge = Convert.ToDecimal(0.01) * total;
-                            decimal discount = Convert.ToDecimal(0.25) * charge;
-                            decimal Volume = Convert.ToDecimal(0.20) * (charge - discount);
-                            decimal Totalfee = charge - discount - Volume;
-                        }
-                        else
-                        {
-                            decimal charge = Convert.ToDecimal(0.01) * total;
-                            decimal discount = Convert.ToDecimal(0.20) * charge;
-                            decimal Volume = (charge - discount);
-                            decimal Totalfee = charge - discount - Volume;
-                        }
-                        if (merchantName == "Rema1000" && merchanatItems.Count() > 9 && DateTime.Now! > expiryDate)
-                        {
-                            decimal charge = Convert.ToDecimal(0.01) * total;
-                            decimal discount = Convert.ToDecimal(0.15) * charge;
-                            decimal Volume = Convert.ToDecimal(0.20) * (charge - discount);
-                            decimal Totalfee = charge - discount - Volume;
-                        }
-                        else
-                        {
-                            decimal charge = Convert.ToDecimal(0.01) * total;
-                            decimal discount = Convert.ToDecimal(0.15) * charge;
-                            decimal Volume = (charge - discount);
-                            decimal Totalfee = charge - discount - Volume;
-                        }
-                        if (merchantName == "McDonald" && merchanatItems.Count() > 9 && DateTime.Now! > expiryDate)
-                        {
-                            decimal charge = Convert.ToDecimal(0.01) * total;
-                            decimal discount = Convert.ToDecimal(0.05) * charge;
-                            decimal Volume = Convert.ToDecimal(0.20) * (charge - discount);
-                            decimal Totalfee = charge - discount - Volume;
-                        }
-                        else
-                        {
-                            decimal charge = Convert.ToDecimal(0.01) * total;
-                            decimal discount = Convert.ToDecimal(0.05) * charge;
-                            decimal Volume = (charge - discount);
-                            decimal Totalfee = charge - discount - Volume;
-                        }
-                    }
-                
+            if ((dayOfweek != "Saturday") || (dayOfweek != "Sunday"))
+            {
+                if (merchantName == "Tesla" && merchanatItems.Count() > 9 && DateTime.Now! > expiryDate)
+                {
+                    decimal charge = Convert.ToDecimal(0.01) * total;
+                    decimal discount = Convert.ToDecimal(0.25) * charge;
+                    decimal Volume = Convert.ToDecimal(0.20) * (charge - discount);
+                    decimal Totalfee = charge - discount - Volume;
+                }
+                else
+                {
+                    decimal charge = Convert.ToDecimal(0.01) * total;
+                    decimal discount = Convert.ToDecimal(0.20) * charge;
+                    decimal Volume = (charge - discount);
+                    decimal Totalfee = charge - discount - Volume;
+                }
+                if (merchantName == "Rema1000" && merchanatItems.Count() > 9 && DateTime.Now! > expiryDate)
+                {
+                    decimal charge = Convert.ToDecimal(0.01) * total;
+                    decimal discount = Convert.ToDecimal(0.15) * charge;
+                    decimal Volume = Convert.ToDecimal(0.20) * (charge - discount);
+                    decimal Totalfee = charge - discount - Volume;
+                }
+                else
+                {
+                    decimal charge = Convert.ToDecimal(0.01) * total;
+                    decimal discount = Convert.ToDecimal(0.15) * charge;
+                    decimal Volume = (charge - discount);
+                    decimal Totalfee = charge - discount - Volume;
+                }
+                if (merchantName == "McDonald" && merchanatItems.Count() > 9 && DateTime.Now! > expiryDate)
+                {
+                    decimal charge = Convert.ToDecimal(0.01) * total;
+                    decimal discount = Convert.ToDecimal(0.05) * charge;
+                    decimal Volume = Convert.ToDecimal(0.20) * (charge - discount);
+                    decimal Totalfee = charge - discount - Volume;
+                }
+                else
+                {
+                    decimal charge = Convert.ToDecimal(0.01) * total;
+                    decimal discount = Convert.ToDecimal(0.05) * charge;
+                    decimal Volume = (charge - discount);
+                    decimal Totalfee = charge - discount - Volume;
+                }
+            }
+
             if (MerchantTotalFees == null)
             {
                 return NotFound();
