@@ -42,7 +42,14 @@ namespace MobilePayAPI.Contrllers
         public ActionResult<IEnumerable<MerchantReadDto>> GetMerchants()
         {
             var merchanatItems = _merchantService.GetMerchants();
-            _backgroundJobClient.Enqueue(() => _merchantService.GetMerchants());
+            foreach (var merchant in merchanatItems)
+            {
+                BackgroundJob.Enqueue(() => 
+                Console.WriteLine($"Merchant Items Enqueue : " +
+                $"Merchant ID:{0}, Metrchant Name:{1}, Merchant Amount: {2}, Merchant TimeSpan: {3}"
+                ,merchant.ID,merchant.MerchantName, merchant.Amount, merchant.Timestamp));
+            }
+            
             return Ok(_mapper.Map<IEnumerable<MerchantReadDto>>(merchanatItems));
         }
         [HttpGet("MerchantGuid/{id}", Name = "GetMerchant")]
@@ -67,7 +74,6 @@ namespace MobilePayAPI.Contrllers
             string dateInString = "01.01.2020";
             DateTime startDate = DateTime.Parse(dateInString);
             DateTime expiryDate = startDate.AddDays(30);
-
             var merchanatItems = _merchantService.GetMerchantTransactionsByName(merchantName);
             var MerchantTotalFees = from merchant in merchanatItems
                                     group merchant by merchant.MerchantName into merchantGroup
