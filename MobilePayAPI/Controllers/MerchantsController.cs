@@ -85,7 +85,7 @@ namespace MobilePayAPI.Contrllers
 
                     if ((dayOfweek != "Saturday") || (dayOfweek != "Sunday"))
                     {
-                        if (merchantName == "Tesla" && MerchantTotalFees.Count() > 10 && DateTime.Now! > expiryDate)
+                        if (merchantName == "Tesla" && merchanatItems.Count() > 9 && DateTime.Now! > expiryDate)
                         {
                             decimal charge = Convert.ToDecimal(0.01) * total;
                             decimal discount = Convert.ToDecimal(0.20) * charge;
@@ -99,7 +99,7 @@ namespace MobilePayAPI.Contrllers
                             decimal Volume = (charge - discount);
                             decimal Totalfee = charge - discount - Volume;
                         }
-                        if (merchantName == "Rema1000" && MerchantTotalFees.Count() > 10 && DateTime.Now! > expiryDate)
+                        if (merchantName == "Rema1000" && merchanatItems.Count() > 9 && DateTime.Now! > expiryDate)
                         {
                             decimal charge = Convert.ToDecimal(0.01) * total;
                             decimal discount = Convert.ToDecimal(0.15) * charge;
@@ -113,7 +113,7 @@ namespace MobilePayAPI.Contrllers
                             decimal Volume = (charge - discount);
                             decimal Totalfee = charge - discount - Volume;
                         }
-                        if (merchantName == "McDonald" && MerchantTotalFees.Count() > 10 && DateTime.Now! > expiryDate)
+                        if (merchantName == "McDonald" && merchanatItems.Count() > 9 && DateTime.Now! > expiryDate)
                         {
                             decimal charge = Convert.ToDecimal(0.01) * total;
                             decimal discount = Convert.ToDecimal(0.05) * charge;
