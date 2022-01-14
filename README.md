@@ -17,7 +17,5 @@
 {
 Select MerchantName, COUNT(MerchantName),Sum (Amount) as Total_Fee FROM [MerchantDb].[dbo].[Merchants] Group By MerchantName
 }
-* Update The Final ChargeFee after Discount is IN- PROGRESS.....
-
 
 ![alt text](https://github.com/tarekdoha-365/MobilePay/blob/master/MobilePayAPI/Images/MobilePayResult.PNG)
