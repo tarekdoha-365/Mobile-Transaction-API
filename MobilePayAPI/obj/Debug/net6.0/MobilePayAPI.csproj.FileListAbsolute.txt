@@ -183,4 +183,3 @@ C:\Mobile Pay\Mobile Pay Assignment\Code\MobilePayAPI\obj\Debug\net6.0\MobilePay
 C:\Mobile Pay\Mobile Pay Assignment\Code\MobilePayAPI\obj\Debug\net6.0\ref\MobilePayAPI.dll
 C:\Mobile Pay\Mobile Pay Assignment\Code\MobilePayAPI\obj\Debug\net6.0\MobilePayAPI.pdb
 C:\Mobile Pay\Mobile Pay Assignment\Code\MobilePayAPI\obj\Debug\net6.0\MobilePayAPI.genruntimeconfig.cache
-C:\Mobile Pay\Mobile Pay Assignment\Code\MobilePayAPI\obj\Debug\net6.0\MobilePayAPI.csproj.AssemblyReference.cache
