@@ -15,25 +15,19 @@ namespace MobilePayAPI.Repositories
         {
             _context = context;
         }
-        public Merchant CreateMerchant(Merchant merchant)
+        public IEnumerable<Merchant> CreateMerchant(List<Merchant> merchants)
         {
-            _logger.Info("****Create Merchant Method Start****");
-            try
+            if (merchants == null)
             {
-                Console.WriteLine("CreateMerchant Method Start");
-                _context.Merchants.Add(merchant);
-                _context.SaveChanges();
-                return merchant;
+                throw new ArgumentNullException(nameof(merchants));
             }
-            catch (NotSupportedException ex)
+            foreach (var merhant in merchants)
             {
-                _logger.Error($"Not Supported Exception {merchant.Amount} or {merchant.MerchantName} do not have value!" + ex.StackTrace);
+                _context.Merchants.Add(merhant);
+                _context.SaveChanges(); 
             }
-            catch (Exception ex)
-            {
-                _logger.Error(ex.StackTrace);
-            }
-            return default(Merchant);
+
+            return (IEnumerable<Merchant>)merchants;
         }
 
         public Merchant GetMerchant(Guid id)

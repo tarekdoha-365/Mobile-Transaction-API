@@ -10,6 +10,6 @@ namespace MobilePayAPI.Interfaces
         IEnumerable<Merchant> GetMerchants();
         IEnumerable<Merchant> GetMerchantTransactionsByName(string merchantName);
         Merchant GetMerchant(Guid id);
-        Merchant CreateMerchant(Merchant transaction);
+        IEnumerable<Merchant> CreateMerchant(List<Merchant> merchants);
     }
 }
