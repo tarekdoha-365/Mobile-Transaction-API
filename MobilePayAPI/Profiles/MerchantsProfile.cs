@@ -11,6 +11,7 @@ namespace MobilePayAPI.Profiles
         {
             CreateMap<MerchantCreateDto, Merchant>();
             CreateMap<Merchant, MerchantReadDto>();
+            CreateMap<MerchantCreateDto, MerchantReadDto>();
         }
     }
 }
