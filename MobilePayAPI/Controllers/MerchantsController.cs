@@ -27,24 +27,31 @@ namespace MobilePayAPI.Contrllers
             _backgroundJobClient = backgroundJobClient;
         }
         [HttpPost]
-        public ActionResult<MerchantReadDto> CreateMerchant(List<MerchantCreateDto> merchantCreateDto)
+        public async Task<ActionResult<MerchantReadDto>> CreateMerchant(List<MerchantCreateDto> merchantCreateDto)
         {
             var merchantModel = _mapper.Map<List<Merchant>>(merchantCreateDto);
             _merchantService.CreateMerchant(merchantModel);
-            _merchantService.SaveChanges();
+            await _merchantService.SaveChangesAsync();
             var merchantReadDto = _mapper.Map<List<MerchantReadDto>>(merchantModel);
-            return Ok(merchantReadDto);
+            return CreatedAtRoute(
+                routeName: "GetMerchant", 
+                routeValues: new {id= merchantModel.Any()}, 
+                value: merchantReadDto);
         }
         [HttpGet]
         public ActionResult<IEnumerable<MerchantReadDto>> GetMerchants()
         {
-            var merchanatItems = _merchantService.GetMerchants();  
+            var merchanatItems = _merchantService.GetMerchants();
             return Ok(_mapper.Map<IEnumerable<MerchantReadDto>>(merchanatItems));
         }
-        [HttpGet("MerchantGuid/{id}", Name = "GetMerchant")]
-        public ActionResult<MerchantReadDto> GetMerchant(Guid id)
+        [HttpGet("GetMerchant/{id}", Name = "GetMerchant")]
+        public async Task<ActionResult<MerchantReadDto>> GetMerchant(Guid id)
         {
-            var merchantItem = _merchantService.GetMerchant(id);
+            var merchantItem = await _merchantService.GetMerchantAsync(id);
+            if (merchantItem == null)
+            {
+                return NotFound();
+            }
             return Ok(_mapper.Map<MerchantReadDto>(merchantItem));
         }
 

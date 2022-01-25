@@ -4,6 +4,7 @@ using MobilePayAPI.Entities;
 using MobilePayAPI.Interfaces;
 using NLog;
 using ILogger = NLog.ILogger;
+using Microsoft.EntityFrameworkCore;
 
 namespace MobilePayAPI.Repositories
 {
@@ -30,13 +31,16 @@ namespace MobilePayAPI.Repositories
             return (IEnumerable<Merchant>)merchants;
         }
 
-        public Merchant GetMerchant(Guid id)
+        public async Task<Merchant> GetMerchantAsync(Guid id)
         {
             _logger.Info("****Get Merchant By Id Method Start****");
             try
             {
-                var merchantItem = _context.Merchants.FirstOrDefault(x => x.ID == id);
-                return merchantItem;
+                if(id== Guid.Empty)
+                {
+                    throw new ArgumentNullException(nameof(id));
+                }
+                return await _context.Merchants.FirstOrDefaultAsync(x => x.ID == id);
             }
             catch (ArgumentNullException ex)
             {
@@ -90,12 +94,12 @@ namespace MobilePayAPI.Repositories
             return Enumerable.Empty<Merchant>();
         }
 
-        public bool SaveChanges()
+        public async Task<bool> SaveChangesAsync()
         {
             _logger.Info("****Save Changes Method Start****");
             try
             {
-                return (_context.SaveChanges() > 0);
+                return (await _context.SaveChangesAsync() > 0);
             }
             catch (Exception ex)
             {
