@@ -25,7 +25,7 @@ namespace MobilePayAPI.Repositories
             foreach (var merhant in merchants)
             {
                 _context.Merchants.Add(merhant);
-                _context.SaveChanges(); 
+                _context.SaveChanges();
             }
 
             return (IEnumerable<Merchant>)merchants;
@@ -36,7 +36,7 @@ namespace MobilePayAPI.Repositories
             _logger.Info("****Get Merchant By Id Method Start****");
             try
             {
-                if(id== Guid.Empty)
+                if (id == Guid.Empty)
                 {
                     throw new ArgumentNullException(nameof(id));
                 }
@@ -44,7 +44,7 @@ namespace MobilePayAPI.Repositories
             }
             catch (ArgumentNullException ex)
             {
-                _logger.Error($"ArgumentNullException {id} does not exist or " + ex.StackTrace); 
+                _logger.Error($"ArgumentNullException {id} does not exist or " + ex.StackTrace);
             }
             catch (Exception ex)
             {
@@ -53,18 +53,22 @@ namespace MobilePayAPI.Repositories
             return default(Merchant);
         }
 
-        public IEnumerable<Merchant> GetMerchants()
+        public async Task<IEnumerable<Merchant>> GetMerchantsAsync()
         {
             _logger.Info("****Get All Merchant Method Start****");
             try
             {
-                var merchantItems = _context.Merchants.ToList();
-                return merchantItems;
+
+                return await Task.Run(() =>
+                {
+                    _logger.Info("Getting all merchants");
+                    return _context.Merchants.ToList();
+                });
             }
             catch (ArgumentNullException ex)
             {
                 _logger.Error($"Argument Null Exception Merchants Method Issue getting a list" + ex.StackTrace);
-                
+
             }
             catch (Exception ex)
             {
@@ -73,19 +77,19 @@ namespace MobilePayAPI.Repositories
             return Enumerable.Empty<Merchant>();
         }
 
-        public IEnumerable<Merchant> GetMerchantTransactionsByName(string merchantName)
+        public async Task< IEnumerable<Merchant>> GetMerchantTransactionsByNameAsync(string merchantName)
         {
             _logger.Info("****Get Merchant Transactions By Name Method Start****");
             try
             {
-                var merchantItems = _context.Merchants.Where(m => m.MerchantName.Equals(merchantName)).ToList();
+                var merchantItems = await _context.Merchants.Where(m => m.MerchantName.Equals(merchantName)).ToListAsync();
                 var fees = merchantItems.ToList().Where(a => a.Amount != 0).Select(x => x.Amount).Sum();
                 return merchantItems;
             }
             catch (ArgumentNullException ex)
             {
                 _logger.Error($"Argument Null Exception Get Merchant Transactions By Name issue getting a list by name" + ex.StackTrace);
-                
+
             }
             catch (Exception ex)
             {

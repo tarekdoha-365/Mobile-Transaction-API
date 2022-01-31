@@ -7,8 +7,10 @@ namespace MobilePayAPI.Interfaces
     public interface IMerchantService
     {
         Task<bool> SaveChangesAsync();
-        IEnumerable<Merchant> GetMerchants();
-        IEnumerable<Merchant> GetMerchantTransactionsByName(string merchantName);
+        #region GetMerchants
+        Task<IEnumerable<Merchant>> GetMerchantsAsync();
+        #endregion
+        Task<IEnumerable<Merchant>> GetMerchantTransactionsByNameAsync(string merchantName);
         #region GetMerchantAsync
         Task<Merchant> GetMerchantAsync(Guid id);
         #endregion

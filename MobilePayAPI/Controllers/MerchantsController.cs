@@ -27,25 +27,25 @@ namespace MobilePayAPI.Contrllers
             _backgroundJobClient = backgroundJobClient;
         }
         [HttpPost]
-        public async Task<ActionResult<MerchantReadDto>> CreateMerchant(List<MerchantCreateDto> merchantCreateDto)
+        public async Task<IActionResult> CreateMerchant(List<MerchantCreateDto> merchantCreateDto)
         {
             var merchantModel = _mapper.Map<List<Merchant>>(merchantCreateDto);
             _merchantService.CreateMerchant(merchantModel);
             await _merchantService.SaveChangesAsync();
             var merchantReadDto = _mapper.Map<List<MerchantReadDto>>(merchantModel);
             return CreatedAtRoute(
-                routeName: "GetMerchant", 
-                routeValues: new {id= merchantModel.Any()}, 
+                routeName: "GetMerchant",
+                routeValues: new { id = merchantModel.Any() },
                 value: merchantReadDto);
         }
         [HttpGet]
-        public ActionResult<IEnumerable<MerchantReadDto>> GetMerchants()
+        public async Task<IActionResult> GetMerchants()
         {
-            var merchanatItems = _merchantService.GetMerchants();
+            var merchanatItems = await _merchantService.GetMerchantsAsync();
             return Ok(_mapper.Map<IEnumerable<MerchantReadDto>>(merchanatItems));
         }
         [HttpGet("GetMerchant/{id}", Name = "GetMerchant")]
-        public async Task<ActionResult<MerchantReadDto>> GetMerchant(Guid id)
+        public async Task<IActionResult> GetMerchant(Guid id)
         {
             var merchantItem = await _merchantService.GetMerchantAsync(id);
             if (merchantItem == null)
@@ -56,9 +56,9 @@ namespace MobilePayAPI.Contrllers
         }
 
         [HttpGet("{merchantName}", Name = "GetMerchantTransactionsByName")]
-        public ActionResult<IEnumerable<MerchantReadDto>> GetMerchantsByMerchantName(string merchantName)
+        public async Task<IActionResult> GetMerchantsByMerchantName(string merchantName)
         {
-            var merchanatItems = _merchantService.GetMerchantTransactionsByName(merchantName);
+            var merchanatItems = await _merchantService.GetMerchantTransactionsByNameAsync(merchantName);
             return Ok(_mapper.Map<IEnumerable<MerchantReadDto>>(merchanatItems));
         }
 
@@ -69,7 +69,7 @@ namespace MobilePayAPI.Contrllers
             string dateInString = "01.01.2020";
             DateTime startDate = DateTime.Parse(dateInString);
             DateTime expiryDate = startDate.AddDays(30);
-            var merchanatItems = _merchantService.GetMerchantTransactionsByName(merchantName);
+            var merchanatItems = await _merchantService.GetMerchantTransactionsByNameAsync(merchantName);
             var MerchantTotalFees = from merchant in merchanatItems
                                     group merchant by merchant.MerchantName into merchantGroup
                                     select new
